@@ -1,4 +1,9 @@
-export default function Education({degree, startDate, endDate, school, location}) {
+import EditEducation from "./EditEducation";
+import { useState } from "react";
+
+export default function Education({id, degree, startDate, endDate, school, location, editItem, deleteItem}) {
+    const [modalDisplay, setModalDisplay] = useState(false);
+
     return(
         <li>
             <div>
@@ -7,7 +12,19 @@ export default function Education({degree, startDate, endDate, school, location}
                 <p> {school} </p>
                 <p> {location} </p>
             </div>
-            <button> Edit </button>
+            <button onClick={() => setModalDisplay(true)}> Edit </button>
+            <button onClick={() => deleteItem(id)}> Delete </button>
+            {modalDisplay && <EditEducation 
+                setModalDisplay={setModalDisplay}
+                id={id}
+                degree={degree}
+                startDate={startDate}
+                endDate={endDate}
+                school={school}
+                location={location}
+                editItem={editItem}
+                />
+            }
         </li>
     )
 }

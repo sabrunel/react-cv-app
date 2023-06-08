@@ -1,5 +1,5 @@
-import ExperienceList from "./components/ExperienceList"
-import EducationList from "./components/EducationList"
+import ExperienceList from "./components/ExperienceList";
+import EducationList from "./components/EducationList";
 
 export default function App() {
 
@@ -10,5 +10,5 @@ export default function App() {
           <EducationList/>
       </main>
     </>
-  )
+  );
 }

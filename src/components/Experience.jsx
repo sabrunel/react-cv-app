@@ -1,4 +1,9 @@
-export default function Experience({title, startDate, endDate, company, location}) {
+import EditExperience from "./EditExperience";
+import { useState } from "react";
+
+export default function Experience({id, title, startDate, endDate, company, location, editItem, deleteItem}) {
+    const [modalDisplay, setModalDisplay] = useState(false);
+
     return(
         <li>
             <div>
@@ -7,7 +12,19 @@ export default function Experience({title, startDate, endDate, company, location
                 <p> {company} </p>
                 <p> {location} </p>
             </div>
-            <button> Edit </button>
+            <button onClick={() => setModalDisplay(true)}> Edit </button>
+            <button onClick={() => deleteItem(id)}> Delete </button>
+            {modalDisplay && <EditExperience
+                setModalDisplay={setModalDisplay}
+                id={id}
+                title={title}
+                startDate={startDate}
+                endDate={endDate}
+                company={company}
+                location={location}
+                editItem={editItem}
+                />
+            }
         </li>
     )
 }
