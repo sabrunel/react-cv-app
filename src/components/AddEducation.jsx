@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { MdClose } from "react-icons/md";
+import PropTypes from 'prop-types';
 
 export default function AddEducation({setModalDisplay, addItem}) {
     const [degree, setDegree] = useState("");
@@ -19,7 +21,7 @@ export default function AddEducation({setModalDisplay, addItem}) {
             <div className="modal">
                 <div className="modal-header">
                     <h2>Add education</h2>
-                    <button onClick={() => setModalDisplay(false)}> X </button>
+                    <button onClick={() => setModalDisplay(false)} aria-label="close modal"> <MdClose/> </button>
                 </div>
                 <div className="modal-body">
                     <form action="" onSubmit={submitHandler} id="add-education-form">
@@ -46,10 +48,15 @@ export default function AddEducation({setModalDisplay, addItem}) {
                     </form>
                 </div>
                 <div className="modal-footer">
-                    <button onClick={() => setModalDisplay(false)}>Cancel</button>
-                    <button type="submit" form="add-education-form">Add</button>
+                    <button className="cancel-btn" onClick={() => setModalDisplay(false)} aria-label="cancel addition">Cancel</button>
+                    <button type="submit" form="add-education-form" aria-label="confirm addition">Add</button>
                 </div>
             </div>
         </>
     )
 }
+
+AddEducation.propTypes = {
+    setModalDisplay: PropTypes.func,
+    addItem: PropTypes.func,
+};

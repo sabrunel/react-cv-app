@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { MdClose } from "react-icons/md";
+import PropTypes from 'prop-types';
 
 export default function EditExperience({setModalDisplay, id, title, startDate, endDate, company, location, editItem}) {
     const [newTitle, setNewTitle] = useState(title);
@@ -19,7 +21,7 @@ export default function EditExperience({setModalDisplay, id, title, startDate, e
             <div className="modal">
                 <div className="modal-header">
                     <h2>Edit experience</h2>
-                    <button onClick={() => setModalDisplay(false)}> X </button>
+                    <button onClick={() => setModalDisplay(false)} aria-label="close modal"> <MdClose/> </button>
                 </div>
                 <div className="modal-body">
                     <form action="" id="edit-experience-form" onSubmit={submitHandler}>
@@ -46,11 +48,22 @@ export default function EditExperience({setModalDisplay, id, title, startDate, e
                     </form>
                 </div>
                 <div className="modal-footer">
-                    <button onClick={() => setModalDisplay(false)}>Cancel</button>
-                    <button type="submit" form="edit-experience-form">Update</button>
+                    <button className="cancel-btn" onClick={() => setModalDisplay(false)} aria-label="cancel modications">Cancel</button>
+                    <button type="submit" form="edit-experience-form" aria-label="confirm modications">Update</button>
                 </div>
             </div>
         </>
         
     )
 }
+
+EditExperience.propTypes = {
+    setModalDisplay: PropTypes.func,
+    id: PropTypes.number,
+    title: PropTypes.number,
+    startDate: PropTypes.string, 
+    endDate: PropTypes.string,
+    company: PropTypes.string,
+    location: PropTypes.string, 
+    editItem: PropTypes.func,
+};

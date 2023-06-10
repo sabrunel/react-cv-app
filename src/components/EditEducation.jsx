@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { MdClose } from "react-icons/md";
+import PropTypes from 'prop-types';
 
 export default function EditEducation({setModalDisplay, id, degree, startDate, endDate, school, location, editItem}) {
     const [newDegree, setNewDegree] = useState(degree);
@@ -18,7 +20,7 @@ export default function EditEducation({setModalDisplay, id, degree, startDate, e
             <div className="modal">
                 <div className="modal-header">
                     <h2>Edit education</h2>
-                    <button onClick={() => setModalDisplay(false)}> X </button>
+                    <button onClick={() => setModalDisplay(false)} aria-label="close modal"> <MdClose/> </button>
                 </div>
                 <div className="modal-body">
                     <form action="" id="edit-education-form" onSubmit={submitHandler}>
@@ -45,10 +47,21 @@ export default function EditEducation({setModalDisplay, id, degree, startDate, e
                     </form>
                 </div>
                 <div className="modal-footer">
-                    <button onClick={() => setModalDisplay(false)}>Cancel</button>
-                    <button type="submit" form="edit-education-form">Update</button>
+                    <button className="cancel-btn" onClick={() => setModalDisplay(false)} aria-label="cancel modications">Cancel</button>
+                    <button type="submit" form="edit-education-form" aria-label="confirm modications">Update</button>
                 </div>
             </div>
         </>
     )
 }
+
+EditEducation.propTypes = {
+    setModalDisplay: PropTypes.func,
+    id: PropTypes.number,
+    degree: PropTypes.number,
+    startDate: PropTypes.string, 
+    endDate: PropTypes.string,
+    school: PropTypes.string,
+    location: PropTypes.string, 
+    editItem: PropTypes.func,
+};
