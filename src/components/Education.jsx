@@ -7,17 +7,19 @@ export default function Education({id, degree, startDate, endDate, school, locat
     const [modalDisplay, setModalDisplay] = useState(false);
 
     return(
-        <li className="record-card">
-            <div className="record-content">
-                <h3> {degree} </h3>
-                <p> {startDate} - {endDate} </p>
-                <p> {school} </p>
-                <p> {location} </p>
-            </div>
-            <div className="record-options">
-                <button onClick={() => setModalDisplay(true)} aria-label="edit item"> <MdEditNote/> </button>
-                <button onClick={() => deleteItem(id)} aria-label="delete item"> <MdDeleteOutline/> </button>
-            </div> 
+        <li>
+            <article className="record-card">
+                <div className="record-content">
+                    <h3> {degree} </h3>
+                    <p> {startDate} - {endDate} </p>
+                    <p> {school} </p>
+                    <p> {location} </p>
+                </div>
+                <div className="record-options">
+                    <button onClick={() => setModalDisplay(true)} aria-label="edit item"> <MdEditNote/> </button>
+                    <button onClick={() => deleteItem(id)} aria-label="delete item"> <MdDeleteOutline/> </button>
+                </div> 
+            </article>
             {modalDisplay && <EditEducation 
                 setModalDisplay={setModalDisplay}
                 id={id}
@@ -35,7 +37,7 @@ export default function Education({id, degree, startDate, endDate, school, locat
 
 Education.propTypes = {
     id: PropTypes.number,
-    degree: PropTypes.number,
+    degree: PropTypes.string,
     startDate: PropTypes.string, 
     endDate: PropTypes.string,
     school: PropTypes.string,

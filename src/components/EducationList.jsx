@@ -107,14 +107,14 @@ export default function EducationList() {
 
     return (
         <section>
-          <div className="section-header">
+          <header className="section-header">
             <h2>Education</h2>
-            <button onClick={() => setModalDisplay(true)} aria-label="Add education"> <MdAdd/> </button>
-          </div>
+            <button onClick={() => setModalDisplay(true)} aria-label="Add education" className="add-btn"> <MdAdd/> </button>
+          </header>
           <ul className="record-list">
             {allDisplay ? displayList : displayList.slice(0,3) }
           </ul>
-          <div className="section-footer">
+          <footer className="section-footer">
             {displayList.length > 3 &&
               <button onClick={() => setAllDisplay(!allDisplay)}> {
                 allDisplay 
@@ -123,7 +123,7 @@ export default function EducationList() {
                 } 
               </button>
             }
-          </div>
+          </footer>
           {modalDisplay && <AddEducation setModalDisplay={setModalDisplay} addItem={addEducation}/>}
         </section>
     )
