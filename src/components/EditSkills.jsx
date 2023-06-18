@@ -18,8 +18,6 @@ export default function EditSkills({setModalDisplay, tagList, updateList}){
 
     function addTag(label) {
         setTempList((currentList) => {
-            console.log("adding" + label);
-            console.log(currentList);
             return [
                 ...currentList,
                 {id: new Date().getTime(),
@@ -32,8 +30,6 @@ export default function EditSkills({setModalDisplay, tagList, updateList}){
 
     function deleteTag(id) {
         setTempList((currentList) => {
-            console.log("deleting" + id);
-            console.log(currentList);
             return currentList.filter((skill) => skill.id !== id)
         })
     }

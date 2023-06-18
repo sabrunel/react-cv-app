@@ -5,20 +5,25 @@ import PropTypes from 'prop-types';
 
 export default function Education({id, degree, startDate, endDate, school, location, editItem, deleteItem}) {
     const [modalDisplay, setModalDisplay] = useState(false);
+    const [optionsDisplay, setOptionsDisplay] = useState(false);
 
     return(
         <li>
-            <article className="record-card">
+            <article 
+            className="record-card"
+            onClick={() => optionsDisplay === false && setOptionsDisplay(!optionsDisplay)} // Toggle options when the hover conditon isn't met (eg. mobile)
+            onMouseOver={() => setOptionsDisplay(true)} 
+            onMouseOut={() => setOptionsDisplay(false)}>
                 <div className="record-content">
                     <h3> {degree} </h3>
-                    <p> {startDate} - {endDate} </p>
+                    <p className="date-text"> {startDate} - {endDate} </p>
                     <p> {school} </p>
                     <p> {location} </p>
                 </div>
-                <div className="record-options">
+                {optionsDisplay && <div className="record-options">
                     <button onClick={() => setModalDisplay(true)} aria-label="edit item"> <MdEditNote/> </button>
                     <button onClick={() => deleteItem(id)} aria-label="delete item"> <MdDeleteOutline/> </button>
-                </div> 
+                </div>} 
             </article>
             {modalDisplay && <EditEducation 
                 setModalDisplay={setModalDisplay}

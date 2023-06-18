@@ -1,14 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import PropTypes from 'prop-types';
 import { MdEditNote } from "react-icons/md";
 import EditIntro from "./EditIntro";
 
-export default function Intro() {
+export default function Intro( { data, updateData } ) {
     const [modalDisplay, setModalDisplay] = useState(false);
-    const [intro, setIntro] = useState({
-        name: "Draven Darkthorn",
-        title: "Underworld Strategist",
-        about: "A mastermind strategist with a genius-level intellect, I excel in the art of manipulation and the weaving of intricate schemes. My advanced combat training makes me a formidable adversary in physical confrontations. Yet, it is my mastery of dark arts that truly sets me apart. I can provide valuable expertise in devising intricate plans, coordinating resources, and ensuring the success of my employers' nefarious endeavors.",
-    })
+    const [intro, setIntro] = useState(data);
 
     function editIntro(newName, newTitle, newAbout) {
         setIntro((currentIntro) => {
@@ -21,10 +18,14 @@ export default function Intro() {
         })
     }
 
+    useEffect(() => {
+        updateData(intro)
+    }, [intro, updateData])
+
     return (
         <>
-            <section>
-                <header className="section-header">
+            <section className="intro-section">
+                <header>
                     <div className="heading-container">
                         <h1>{intro.name}</h1>
                         <h2>{intro.title}</h2>
@@ -41,3 +42,8 @@ export default function Intro() {
         </>
     )
 }
+
+Intro.propTypes = {
+    data: PropTypes.object,
+    updateData: PropTypes.func
+  };

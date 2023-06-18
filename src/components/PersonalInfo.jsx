@@ -1,14 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import PropTypes from 'prop-types';
 import { MdEditNote } from "react-icons/md";
 import EditInfos from "./EditInfos";
 
-export default function Skills() {
+export default function PersonalInfo({ data, updateData }) {
     const [modalDisplay, setModalDisplay] = useState(false);
-    const [infos, setInfos] = useState({
-        email: "draven.darkthorn@shadowmail.com",
-        address: "123 Shadow Street, Dark City, USA",
-        phoneNumber: "+1 (555) 123-4567",
-    })
+    const [infos, setInfos] = useState(data);
 
     function editInfos(newEmail, newAdress, newPhoneNumber) {
         setInfos((currentInfos) => {
@@ -21,27 +18,31 @@ export default function Skills() {
         })
     }
 
+    useEffect(() => {
+        updateData(infos)
+      }, [infos, updateData])
+
     return (
         <>
             <section>
-                <header className="aside-header">
-                    <h3>Personal information</h3>
-                    <button onClick={() => setModalDisplay(true)} aria-label="edit infos"> <MdEditNote/> </button>
-                </header> 
-                <div className="info-list">
-                    <div className="info-group">
-                     <p>Email</p>
-                     <p>{infos.email}</p>
-                    </div>
-                    <div className="info-group">
-                     <p>Address</p>
-                     <p>{infos.address}</p>
-                    </div>
-                    <div className="info-group">
-                     <p>Phone number</p>
-                     <p>{infos.phoneNumber}</p>
-                    </div>
-                </div>
+                    <header className="aside-header">
+                        <h3>Personal information</h3>
+                        <button onClick={() => setModalDisplay(true)} aria-label="edit infos"> <MdEditNote/> </button>
+                    </header> 
+                    <ul className="info-list">
+                        <li className="info-group">
+                        <p>Email</p>
+                        <p>{infos.email}</p>
+                        </li>
+                        <li className="info-group">
+                        <p>Address</p>
+                        <p>{infos.address}</p>
+                        </li>
+                        <li className="info-group">
+                        <p>Phone number</p>
+                        <p>{infos.phoneNumber}</p>
+                        </li>
+                    </ul>
             </section>
             {modalDisplay && <EditInfos
                 setModalDisplay={setModalDisplay}
@@ -52,3 +53,8 @@ export default function Skills() {
         </>
     )
 }
+
+PersonalInfo.propTypes = {
+    data: PropTypes.object,
+    updateData: PropTypes.func
+  };

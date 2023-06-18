@@ -1,0 +1,95 @@
+{
+    "personalInformation": {
+      "email": "draven.darkthorn@shadowmail.com",
+      "address": "123 Shadow Street, Dark City, USA",
+      "phoneNumber": "+1 (555) 123-4567"
+    },
+    "skills": [
+      {
+        "id": 1,
+        "label": "Mastermind Strategist"
+      },
+      {
+        "id": 2,
+        "label": "Expert Manipulator"
+      },
+      {
+        "id": 3,
+        "label": "Advanced Combat Training"
+      },
+      {
+        "id": 4,
+        "label": "Mastery of Dark Arts"
+      },
+      {
+        "id": 5,
+        "label": "Genius-level Intellect"
+      }
+    ],
+    "introduction": {
+      "name": "Draven Darkthorn",
+      "title": "Underworld Strategist",
+      "about": "A mastermind strategist with a genius-level intellect, I excel in the art of manipulation and the weaving of intricate schemes. I can provide valuable expertise in devising intricate plans, coordinating resources, and ensuring the success of my employers' nefarious endeavors."
+    },
+    "education": [
+        {
+          "id": 1,
+          "degree": "Associate's",
+          "startDate": "01-01-1990",
+          "endDate": "01-01-1992",
+          "school": "Dark Institute",
+          "location": "Nightfall City, USA"
+        },
+        {
+          "id": 2,
+          "degree": "Bachelor's",
+          "startDate": "01-01-1990",
+          "endDate": "01-01-1993",
+          "school": "Villain University",
+          "location": "New York, USA"
+        },
+        {
+          "id": 3,
+          "degree": "Master's",
+          "startDate": "01-01-1995",
+          "endDate": "01-01-1997",
+          "school": "Evil Institute of Technology",
+          "location": "Gotham City, USA"
+        },
+        {
+          "id": 4,
+          "degree": "Ph.D.",
+          "startDate": "01-01-2000",
+          "endDate": "01-01-2005",
+          "school": "Doom University",
+          "location": "Latveria, Europe"
+        }
+      ],
+      "experience": [
+        {
+          "id": 1,
+          "title": "Chief Evil Officer",
+          "startDate": "2003-03-03",
+          "endDate": "2005-03-03",
+          "company": "Sinister Corporation",
+          "location": "Madripoor, Southeast Asia"
+        },
+        {
+          "id": 2,
+          "title": "Lead Henchman",
+          "startDate": "2006-06-06",
+          "endDate": "2007-06-06",
+          "company": "Hydra Organization",
+          "location": "Unknown"
+        },
+        {
+          "id": 3,
+          "title": "Director of Mischief",
+          "startDate": "2009-09-09",
+          "endDate": "2012-09-09",
+          "company": "Loki Enterprises",
+          "location": "Asgard"
+        }
+      ]
+  }
+  

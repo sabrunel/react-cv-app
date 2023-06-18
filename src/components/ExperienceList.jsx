@@ -1,38 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import PropTypes from 'prop-types';
 import Experience from "./Experience";
 import AddExperience from "./AddExperience";
 import { MdAdd } from "react-icons/md";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 
-export default function ExperienceList() {
+export default function ExperienceList({ data, updateData }) {
     const [modalDisplay, setModalDisplay] = useState(false);
     const [allDisplay, setAllDisplay] = useState(false);
-    const [experienceList, setExperienceList] = useState([
-        {
-          "id": 1,
-          "title": "Chief Evil Officer",
-          "startDate": "2003-03-03",
-          "endDate": "2005-03-03",
-          "company": "Sinister Corporation",
-          "location": "Madripoor, Southeast Asia"
-        },
-        {
-          "id": 2,
-          "title": "Lead Henchman",
-          "startDate": "2006-06-06",
-          "endDate": "2007-06-06",
-          "company": "Hydra Organization",
-          "location": "Unknown"
-        },
-        {
-          "id": 3,
-          "title": "Director of Mischief",
-          "startDate": "2009-09-09",
-          "endDate": "2012-09-09",
-          "company": "Loki Enterprises",
-          "location": "Asgard"
-        }
-      ]);
+    const [experienceList, setExperienceList] = useState(data);
 
     function addExperience(title, startDate, endDate, company, location) {
       setExperienceList((currentList) => {
@@ -49,6 +25,10 @@ export default function ExperienceList() {
         ];
       })
     }
+
+    useEffect(() => {
+      updateData(experienceList)
+    }, [experienceList, updateData])
 
     function editExperience(id, newTitle, newStartDate, newEndDate, newCompany, newlocation) {
       setExperienceList((currentList) => {
@@ -89,15 +69,15 @@ export default function ExperienceList() {
 
     return (
         <section>
-          <header className="section-header">
+          <header>
             <h2>Experience</h2>
             <button onClick={() => setModalDisplay(true)} aria-label="Add experience" className="add-btn"> <MdAdd/> </button>
           </header>
           <ul className="record-list">
             {allDisplay ? displayList : displayList.slice(0,5)}
           </ul>
-          <footer className="section-footer">
-            {displayList.length > 5 &&
+          <footer>
+            {displayList.length > 3 &&
                 <button onClick={() => setAllDisplay(!allDisplay)}> {
                   allDisplay 
                   ? <><BsChevronUp/><span>Show less</span></>
@@ -110,3 +90,8 @@ export default function ExperienceList() {
         </section>
     )
 }
+
+ExperienceList.propTypes = {
+  data: PropTypes.array,
+  updateData: PropTypes.func
+};
