@@ -25,20 +25,20 @@ export default function PersonalInfo({ data, updateData }) {
     return (
         <>
             <section>
-                    <header className="aside-header">
+                    <div className="aside-header">
                         <h3>Personal information</h3>
                         <button onClick={() => setModalDisplay(true)} aria-label="edit infos"> <MdEditNote/> </button>
-                    </header> 
+                    </div> 
                     <ul className="info-list">
-                        <li className="info-group">
+                        <li className="list-group">
                         <p>Email</p>
                         <p>{infos.email}</p>
                         </li>
-                        <li className="info-group">
+                        <li className="list-group">
                         <p>Address</p>
                         <p>{infos.address}</p>
                         </li>
-                        <li className="info-group">
+                        <li className="list-group">
                         <p>Phone number</p>
                         <p>{infos.phoneNumber}</p>
                         </li>

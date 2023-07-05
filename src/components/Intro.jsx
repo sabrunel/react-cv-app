@@ -25,13 +25,13 @@ export default function Intro( { data, updateData } ) {
     return (
         <>
             <section className="intro-section">
-                <header>
+                <div className="main-header">
                     <div className="heading-container">
                         <h1>{intro.name}</h1>
                         <h2>{intro.title}</h2>
                     </div>
                     <button onClick={() => setModalDisplay(true)} aria-label="edit biography"> <MdEditNote/> </button>
-                </header>
+                </div>
                 <p> {intro.about}</p>
             </section>
             {modalDisplay && <EditIntro

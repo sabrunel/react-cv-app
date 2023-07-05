@@ -1,10 +1,10 @@
-import ExperienceList from "./components/ExperienceList";
-import EducationList from "./components/EducationList";
-import Intro from "./components/Intro";
-import PersonalInfo from "./components/PersonalInfo";
-import SkillList from "./components/SkillList";
 import mockData from "./mock-resume.json";
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext } from "react";
+import Header from "./layouts/Header";
+import Aside from "./layouts/Aside";
+import Main from "./layouts/Main";
+
+export const AppContext = createContext();
 
 export default function App() {
   const [appData, setAppData] = useState(() => {
@@ -62,15 +62,22 @@ export default function App() {
 
   return (
     <>
-      <main>
-          <Intro data={introData} updateData={updateIntro}/>
-          <ExperienceList data={experienceData} updateData={updateExperience}/>
-          <EducationList data={educationData} updateData={updateEducation}/> 
-      </main>
-      <aside>
-        <PersonalInfo data={personalInfoData} updateData={updatePersonalInfo}/>
-        <SkillList data={skillsData} updateData={updateSkills}/>
-      </aside>
+        <Header data={appData}/>
+        <AppContext.Provider  value={{
+          introData,
+          personalInfoData, 
+          skillsData,
+          experienceData,
+          educationData,
+          updateIntro, 
+          updatePersonalInfo, 
+          updateSkills,
+          updateExperience,
+          updateEducation
+          }}>
+            <Main/>
+            <Aside/>
+        </AppContext.Provider>
     </>
   );
 }

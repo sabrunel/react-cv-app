@@ -69,14 +69,14 @@ export default function ExperienceList({ data, updateData }) {
 
     return (
         <section>
-          <header>
+          <div className="main-header">
             <h2>Experience</h2>
             <button onClick={() => setModalDisplay(true)} aria-label="Add experience" className="add-btn"> <MdAdd/> </button>
-          </header>
+          </div>
           <ul className="record-list">
             {allDisplay ? displayList : displayList.slice(0,5)}
           </ul>
-          <footer>
+          <div className="main-footer">
             {displayList.length > 3 &&
                 <button onClick={() => setAllDisplay(!allDisplay)}> {
                   allDisplay 
@@ -85,7 +85,7 @@ export default function ExperienceList({ data, updateData }) {
                   } 
                 </button>
               }
-          </footer>
+          </div>
             {modalDisplay && <AddExperience setModalDisplay={setModalDisplay} addItem={addExperience}/>}
         </section>
     )

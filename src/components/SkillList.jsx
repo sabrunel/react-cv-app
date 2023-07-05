@@ -19,14 +19,14 @@ export default function SkillList({ data, updateData }) {
     return (
         <>
             <section className="skill-section">
-                    <header className="aside-header">
+                    <div className="aside-header">
                         <h3>Skills</h3>
                         <button onClick={() => setModalDisplay(true)} aria-label="edit skills"> <MdEditNote/> </button>
-                    </header>  
+                    </div>  
                     <ul className="skill-list">
                         {skillList.map((skill) => {
                             return (
-                                <li key={skill.id}>
+                                <li className="list-group" key={skill.id}>
                                     <p>{skill.label}</p>
                                 </li>
                             )

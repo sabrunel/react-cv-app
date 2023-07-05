@@ -71,14 +71,14 @@ export default function EducationList({ data, updateData }) {
 
     return (
         <section>
-          <header>
+          <div className="main-header">
             <h2>Education</h2>
             <button onClick={() => setModalDisplay(true)} aria-label="Add education" className="add-btn"> <MdAdd/> </button>
-          </header>
+          </div>
           <ul className="record-list">
             {allDisplay ? displayList : displayList.slice(0,3) }
           </ul>
-          <footer>
+          <div className="main-footer">
             {displayList.length > 3 &&
               <button onClick={() => setAllDisplay(!allDisplay)}> {
                 allDisplay 
@@ -87,7 +87,7 @@ export default function EducationList({ data, updateData }) {
                 } 
               </button>
             }
-          </footer>
+          </div>
           {modalDisplay && <AddEducation setModalDisplay={setModalDisplay} addItem={addEducation}/>}
         </section>
     )
