@@ -36,7 +36,7 @@ export default function EditSkills({setModalDisplay, tagList, updateList}){
 
     return (
         <>
-            <div className="backdrop"></div>
+            <div className="backdrop">
                 <div className="modal">
                     <div className="modal-header">
                         <h2>Edit skills</h2>
@@ -65,6 +65,7 @@ export default function EditSkills({setModalDisplay, tagList, updateList}){
                         <button onClick={updateListHandler} aria-label="confirm modications">Update</button>
                     </div>
                 </div>
+            </div>
         </>
        
     )

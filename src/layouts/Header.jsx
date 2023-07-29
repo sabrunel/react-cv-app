@@ -2,6 +2,8 @@ import { ResumePreview } from "../components/ResumePreview";
 import { useRef} from "react";
 import { useReactToPrint } from 'react-to-print';
 import PropTypes from 'prop-types';
+import { BiDownload } from "react-icons/bi";
+
 
 export default function Header({ data }) {
     const resumePreview = useRef();
@@ -11,7 +13,7 @@ export default function Header({ data }) {
 
     return (
         <header>
-            <button onClick={handlePrint}>Download</button>
+            <button onClick={handlePrint}> <BiDownload/> Download</button>
             <div style={{display: "none"}}>
                 <ResumePreview ref={resumePreview} data={data}/>
             </div>

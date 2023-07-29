@@ -6,60 +6,33 @@ export const ResumePreview = React.forwardRef((props, ref) => {
 
     return (
         <div className="resume-preview" ref={ref}>
-            <div className="preview-main">
-                <div className="preview-intro">
+            <div className="preview-section">
+                <div className="intro__title">
                     <h1>{data.introduction.name}</h1>
-                    <h2>{data.introduction.title}</h2>
-                    <p>{data.introduction.about}</p>
+                    <h2 className="accent-text">{data.introduction.title}</h2>
                 </div>
-                <h2>Experiences</h2>
-                {
-                    data.experience.sort((a,b) => {
-                    return b.startDate > a.startDate ? 1 : -1;
-                        }).map((experience) => {
-                        return (
-                            <div key={experience.id}>
-                                <h3> {experience.title} </h3>
-                                <p > {experience.startDate} - {experience.endDate} </p>
-                                <p> {experience.company} </p>
-                                <p> {experience.location} </p>
-                            </div>
-                        )
-                    })
-                }
-                 <h2>Education</h2>
-                {
-                    data.education.sort((a,b) => {
-                    return b.startDate > a.startDate ? 1 : -1;
-                        }).map((education) => {
-                        return (
-                            <div key={education.id}>
-                                <h3> {education.degree} </h3>
-                                <p> {education.startDate} - {education.endDate} </p>
-                                <p> {education.school} </p>
-                                <p> {education.location} </p>
-                            </div>
-                        )
-                    })
-                }
-            </div>
-            <div className="preview-aside">
-                <h3>Personal information</h3>
-                <ul>
+                <div className='intro__info'>
+                    <ul>
                         <li>
-                        <p>Email</p>
-                        <p>{data.personalInformation.email}</p>
+                            <p>{data.personalInformation.address}</p>
                         </li>
                         <li>
-                        <p>Address</p>
-                        <p>{data.personalInformation.address}</p>
+                            <p>{data.personalInformation.phoneNumber}</p>
                         </li>
                         <li>
-                        <p>Phone number</p>
-                        <p>{data.personalInformation.phoneNumber}</p>
+                            <p>{data.personalInformation.email}</p>
                         </li>
                     </ul>
-                <h3>Skills</h3>
+                </div>
+            </div>
+            <hr />
+            <div className="preview-section">
+                <h2>About</h2>
+                <p className="accent-text">{data.introduction.about}</p>
+            </div>
+            <hr />
+            <div className="preview-section">
+                <h2>Skills</h2>
                 <ul>
                         {data.skills.map((skill) => {
                             return (
@@ -69,7 +42,47 @@ export const ResumePreview = React.forwardRef((props, ref) => {
                             )
                         })
                     }
-                    </ul>
+                </ul>
+            </div>
+            <hr />
+            <div className="preview-section">
+                <h2>Experiences</h2>
+                <ul>
+                    {
+                        data.experience.sort((a,b) => {
+                        return b.startDate > a.startDate ? 1 : -1;
+                            }).map((experience) => {
+                            return (
+                                <li key={experience.id}>
+                                    <h3> {experience.title} </h3>
+                                    <p className="date-text"> {experience.startDate} - {experience.endDate} </p>
+                                    <p> {experience.company} </p>
+                                    <p> {experience.location} </p>
+                                </li>
+                            )
+                        })
+                    }
+                </ul>
+            </div>
+            <hr />
+            <div className="preview-section">
+                 <h2>Education</h2>
+                 <ul>
+                    {
+                        data.education.sort((a,b) => {
+                        return b.startDate > a.startDate ? 1 : -1;
+                            }).map((education) => {
+                            return (
+                                <li key={education.id}>
+                                    <h3> {education.degree} </h3>
+                                    <p className="date-text"> {education.startDate} - {education.endDate} </p>
+                                    <p> {education.school} </p>
+                                    <p> {education.location} </p>
+                                </li>
+                            )
+                        })
+                    }
+                 </ul>
             </div>
         </div>
       );
